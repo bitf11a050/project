@@ -1,0 +1,30 @@
+﻿@model project_mango_.Models.myuser
+
+@{
+    ViewBag.Title = "Details";
+}
+<body background="~/images/3.png">
+<h2>Details</h2>
+
+<fieldset>
+    <legend>myuser</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.pass)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.pass)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+</body>

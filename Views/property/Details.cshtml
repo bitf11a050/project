@@ -1,0 +1,65 @@
+﻿@model project_mango_.Models.property
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/mylayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>property</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.no_of_rooms)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.no_of_rooms)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.location)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.location)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.description)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.description)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.user)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.user)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.contact_no)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.contact_no)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.price)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.price)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,104 @@
+﻿@model project_mango_.Models.pet
+
+@{
+    ViewBag.Title = "Edit";
+    //Layout = "~/Views/Shared/mylayout.cshtml";
+}
+<link href="@Url.Content("~/Content/MYCSS.css")" rel="stylesheet" type="text/css" />
+<body background="~/images/edit.jpg">
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>pet</legend>
+
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.name)
+            @Html.ValidationMessageFor(model => model.name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.pet_name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.pet_name)
+            @Html.ValidationMessageFor(model => model.pet_name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.type)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.type)
+            @Html.ValidationMessageFor(model => model.type)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.legs)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.legs)
+            @Html.ValidationMessageFor(model => model.legs)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.food)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.food)
+            @Html.ValidationMessageFor(model => model.food)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.description)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.description)
+            @Html.ValidationMessageFor(model => model.description)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.user_name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.user_name)
+            @Html.ValidationMessageFor(model => model.user_name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.contactno)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.contactno)
+            @Html.ValidationMessageFor(model => model.contactno)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.price)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.price)
+            @Html.ValidationMessageFor(model => model.price)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+</body>

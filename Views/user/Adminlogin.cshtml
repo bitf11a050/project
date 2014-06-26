@@ -1,0 +1,43 @@
+﻿@model project_mango_.Models.myuser
+
+@{
+    
+    Layout = null;
+}
+
+<link href="@Url.Content("~/Content/MYCSS.css")" rel="stylesheet" type="text/css" />
+<body background="../images/3.png">  
+    <h1 align="center"> ADMIN LOGIN</h1>
+	  <a href="Index"><img src="../images/prev.gif" ></a>
+    
+    @Html.BeginForm("admin","user")
+       
+        <p>
+            @Html.LabelFor(x => x.name)
+            </p>
+		<p>
+            @Html.TextBoxFor(x=>x.name)
+            
+
+		</p>
+
+		<p>
+            @Html.LabelFor(x=>x.pass)
+           
+
+		</p>
+		<p>
+            @Html.TextBoxFor(x=>x.pass)
+           
+
+		</p>
+
+        <p>
+            <input type="submit" value="Submit">
+        <input  type="BUTTON"  VALUE=CANCEL  />
+
+        </p>
+        
+		  </TABLE>
+					</form>
+					</body>

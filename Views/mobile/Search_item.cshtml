@@ -1,0 +1,203 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<script src="~/jquery-1.4.3.min.js"></script>
+
+<link href="@Url.Content("~/Content/MYCSS.css")" rel="stylesheet" type="text/css" />
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Search_item</title>
+<script> 
+    @* -------------------function for search------------------------- *@
+
+    function check() {
+        var specific;
+        var val = $("#SEARCH").val();
+        var category = $("#cat").val();
+        alert(category);
+
+
+        if (category == "MOBILE") {
+            specific = "/mobile/search?SEARCH=" + val;
+            $.getJSON(specific, function (data) {
+                $('#result').show();
+                var results = "<table style='color:red;'cellspacing='20'>";
+                results += "<th>NAME</th><th>MODEL</th><TH>COMPANY</TH><th>DESCRIPTION</th><th>USER</th><th>PHONE</th><th>PRICE</th>";
+                $.each(data, function (index, val) {
+                   
+                    results += "<tr><td >" + val.name + "</td>" + "<td >" + val.model + "</td>" + "<td >" + val.company + "</td>" + "<td >" + val.description + "</td>" + "<td >" + val.user + "</td>";
+                    results += "<td >" + val.contactno + "</td>" + "<td >" + val.price + "</td><td><img src='../Images/uploaded/report.jpg' /></td></tr>";
+                });
+                results += "</table>";
+                $("#result").append(results);
+
+                alert(results);
+
+                if (!data) {
+                    $('#result').text("================NOTHING FOUND=======================");
+                }
+
+            });
+
+        }
+        if (category == "PET") {
+            specific = "/PET/search?SEARCH=" + val;
+            $.getJSON(specific, function (data) {
+                $('#result').show();
+                var results = "<table style='color:red;'cellspacing='20'>";
+                results += "<th>NAME</th><th>PET NAME</th><TH>TYPE</TH><th>LEGS</th><th>FOOD</th><th>DESCRIPTION</th><th>USER</th><th>PHONE</th><th>PRICE</th>";
+                $.each(data, function (index, val) {
+                    results += "<tr><td >" + val.name + "</td>" + "<td >" + val.pet_name + "</td>" + "<td >" + val.type + "</td>" + "</td>" + "<td >" + val.legs + "</td>" + "</td>" + "<td >" + val.food + "</td>" + "<td >" + val.description + "</td>" + "<td >" + val.user_name + "</td>";
+                    results += "<td >" + val.contactno + "</td>" + "<td >" + val.price + "</td><td><img src='../Images/uploaded/" + val.path + "'/></td></tr>";
+                });
+                results += "</table>";
+                $("#result").append(results);
+
+                alert(results);
+
+                if (!data) {
+                    $('#result').text("================NOTHING FOUND=======================");
+                }
+
+            });
+
+
+        }
+        if (category == "CAR") {
+            specific = "/CAR/search?SEARCH=" + val;
+            $.getJSON(specific, function (data) {
+                $('#result').show();
+                var results = "<table style='color:red;'cellspacing='20'>";
+                results += "<th>NAME</th><th>MODEL</th><TH>WHEELS</TH><TH>DOORS</TH><th>DESCRIPTION</th><th>USER</th><th>PHONE</th><th>PRICE</th>";
+                $.each(data, function (index, val) {
+                    results += "<tr><td >" + val.name + "</td>" + "<td >" + val.model + "</td>" + "<td >" + val.wheel + "</td>" + "<td >" + val.door + "</td>" + "<td >" + val.description + "</td>" + "<td >" + val.user + "</td>";
+                    results += "<td >" + val.contactno + "</td>" + "<td >" + val.price + "</td><td><img src='../Images/uploaded/report.jpg' /></td></tr>";
+                });
+                results += "</table>";
+                $("#result").append(results);
+
+                alert(results);
+
+                if (!data) {
+                    $('#result').text("================NOTHING FOUND=======================");
+                }
+
+            });
+
+
+        }
+        if (category == "PROPERTY") {
+
+            specific = "/PROPERTY/search?SEARCH=" + val;
+            $.getJSON(specific, function (data) {
+                $('#result').show();
+                var results = "<table style='color:red;'cellspacing='20'>";
+                results += "<th>NAME</th><th>ROOMS</th><TH>LOCATION</TH><th>DESCRIPTION</th><th>USER</th><th>PHONE</th><th>PRICE</th>";
+                $.each(data, function (index, val) {
+                    var s = val.path;
+                    alert(s);
+                    results += "<tr><td >" + val.name + "</td>" + "<td >" + val.no_of_rooms + "</td>" + "<td >" + val.location + "</td>" + "<td >" + val.description + "</td>" + "<td >" + val.user + "</td>";
+                    results += "<td >" + val.contact_no + "</td>" + "<td >" + val.price + "</td><td><img src='../Images/uploaded/"+s+ "'/></td></tr>";
+                });
+                results += "</table>";
+                $("#result").append(results);
+
+                alert(results);
+
+                if (!data) {
+                    $('#result').text("================NOTHING FOUND=======================");
+                }
+
+            });
+
+        }
+
+        if (category == "LAPTOP") {
+            specific = "/laptop/search?SEARCH=" + val;
+            $.getJSON(specific, function (data) {
+                $('#result').show();
+                var results = "<table style='color:red;'cellspacing='20'>";
+                results += "<th>NAME</th><th>MODEL</th><TH>COMPANY</TH><th>DESCRIPTION</th><th>USER</th><th>PHONE</th><th>PRICE</th>";
+                $.each(data, function (index, val) {
+                    results += "<tr><td >" + val.name + "</td>" + "<td >" + val.model + "</td>" + "<td >" + val.comapany + "</td>" + "<td >" + val.description + "</td>" + "<td >" + val.user + "</td>";
+                    results += "<td >" + val.contactno + "</td>" + "<td >" + val.price + "</td><td><img src='../Images/uploaded/" + val.path + "' /></td></tr>";
+                });
+                results += "</table>";
+                $("#result").append(results);
+
+                alert(results);
+
+                if (!data) {
+                    $('#result').text("================NOTHING FOUND=======================");
+                }
+
+            });
+
+
+        }
+
+        $('#result').text("");            // BY DEFAULT
+
+
+        $("#result").hide();
+        //alert(val);
+
+    }//function check
+
+</script>
+   
+        <!-- section script-->
+
+</head>
+
+
+
+<body background="../images/3.png">
+
+    <!-- Search, etc -->
+    <div class="options">
+      <div class="search">
+        <form  action="#" method="post">
+            <p>
+          <input  type="text" class="field" id="SEARCH"  title="SEARCH" />
+	          </p>              
+            <img src='~/Images/uploaded/report.jpg' />
+            <p>
+                <select  class="fields" id="cat"  name='CATEGORY'>
+									<option value="ALL" selected="selected">All Categories</option>
+									<option value="PROPERTY">Property</option>
+									<option value="MOBILE">Mobile</option>
+									<option value="CAR">cars</option>
+									<option value="LAPTOP">Laptop</option>
+									<option value="PET">Animals</option>
+								</select>
+				</p><p>			
+			<select  class="fields" name='LOCATION' >
+									<option value="LAHORE" selected="selected">ALL PAKISTAN</option>
+									<option value="KARACHI">LAHORE </option>
+									<option value="KARACHI">KARACHI </option>
+									<option value="FAISALABAD">FAISALABAD</option>
+									<option value="RAWALPINDI">RAWALPINDI</option>
+									<option value="ISLAMABAD">ISLAMABAD</option>
+									<option value="MULTAN">MULTAN</option>
+								</select>
+                    </p>
+            <p>
+          <input type="button" onclick="check()"  value="GO" />
+                </p>
+        </form>
+      </div>
+      
+   
+    </div>
+     
+       <div id="result"  class="result" >------------------no record found-------------</div>
+
+
+    <!-- End Search, etc -->
+</body>
+</html>

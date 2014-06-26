@@ -1,0 +1,59 @@
+﻿@{
+   //Layout = "/Views/Shared/mylayout.cshtml";
+    Layout = null;
+}
+    <link href="@Url.Content("~/Content/MYCSS.css")" rel="stylesheet" type="text/css" />
+
+<body background="../images/3.png">
+    <a href="Index"><img src="../images/prev.gif" ></a>
+    
+         
+          
+   <form action="/pet/add" method="post" enctype="multipart/form-data" >
+       
+                <div id="pets">
+                    <TABLE>
+                        <tr><td> PET NAME</TD><TD><INPUT type="text" id="pet_food" name="FOOD" ></td></tr>
+                    <tr><td> TYPE :</TD><TD><INPUT type="text" id="pet_type" name="PET_TYPE" ></td></tr>
+                    <tr><td> LEGS :</TD><TD><INPUT type="text"id="pet_legs"  name="LEGS" ></td></tr>
+                    <tr><td> FOOD :</TD><TD><INPUT type="text" id="pet_food" name="FOOD" ></td></tr>
+
+                    <tr><td> DESCRIPTION :</TD>
+                        <TD><textarea id="pet_description" name="PET_DESCRIPTION" ></textarea></td></tr>
+                        </TABLE>
+                </div>
+              
+                <P>
+                    </P>
+            <TABLE>
+                <tr><td>ITEM Name</td> <td><input id="name" name="NAME" type="text"></td></tr>
+                <tr><td>contact no</td> <td><input id="contact" name="CONTACT" type="text"></td></tr>
+
+                <tr><td>USER NAME</td> <td>
+                    <input id="type" name="TYPE" type="text">
+
+                                 @*   <select id="type">
+									<option value="guest" selected="selected">GUEST</option>
+									<option value="user" >USER </option>
+									</select>
+                                 *@
+              </td></tr>
+
+                <tr><td> PRICE :</TD><TD><INPUT id="price" type="text" name="PRICE" ></td></tr>
+           
+                </table>
+ 
+         
+
+                      Upload Image: <input type="file" name="images" />
+ 
+     
+ 
+                    <input type="submit" value="upload" />
+            </form>
+                
+</body>
+</html>
+
+
+

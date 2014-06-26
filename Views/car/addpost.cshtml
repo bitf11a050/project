@@ -1,0 +1,251 @@
+﻿@{
+   //Layout = "/Views/Shared/mylayout.cshtml";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="@Url.Content("~/Content/MYCSS.css")" rel="stylesheet" type="text/css" />
+
+    <meta name="viewport" content="width=device-width" />
+    
+    <script src="/Scripts/jquery-1.7.1.min.js"></script>
+<script>
+    
+    $(document).ready(function () {      
+        hideall();
+    });
+
+    function hideall()
+    {
+        $("#property").hide();
+       $("#cars").hide();
+        $("#laptop").hide();
+        $("#mobile").hide();
+        $("#pets").hide();
+    }
+  
+   
+
+    function check()
+    {
+        var c = document.getElementById('category').value;
+       
+
+        if (c == "car") {
+            hideall();
+            $("#cars").show();
+         
+
+        }
+        if (c == "property") {
+            hideall();
+            $("#property").show();
+           
+        }
+        if (c == "laptop") {
+            hideall();
+            $("#laptop").show();
+           
+        }
+        if (c == "pet") {
+            hideall();
+            $("#pets").show();
+          
+        }
+        if (c == "mobile") {
+            hideall();
+            $("#mobile").show();
+            
+        }
+        //$('#result').text("");            // BY DEFAULT
+    }
+
+            
+   
+
+    function add() {
+        var c = document.getElementById('category').value;
+        var executed;
+        //common
+        var price = $("#price").val();
+        var contact = $("#contact").val();
+        var name = $("#name").val();
+        var type=$("#type").val();
+
+        // property
+        var room = $("#room").val();
+        var description1 = $("#description1").val();
+        var location = $("#location").val();
+
+        //pet
+        var ptype = $("#pet_type").val();
+        var leg = $("#pet_legs").val();
+        var food = $("#pet_food").val();
+        var description = $("#pet_description").val();
+
+        //car
+        var car_description = $("#car_description").val();
+        var car_door = $("#door").val();
+        var car_wheels = $("#wheel").val();
+        var car_model = $("#car_model").val();
+
+        //laptop
+        var l_model = $("#l_model").val();
+        var l_company = $("#l_company").val();
+        var l_description = $("#l_description").val();
+
+        //mobile
+        var m_model = $("#m_model").val();
+        var m_company = $("#m_company").val();
+        var m_description = $("#m_description").val();
+        
+        var common = "/Add?NAME=" + name + "&CONTACT=" + contact + "&PRICE=" + price +"&TYPE="+type;         
+        alert("hello;")
+
+        if (c == "car") {
+            specific = "/car";
+
+                common += "&MODEL=" + car_model + "&DOORS=" + car_door + "&WHEELS=" + car_wheels + "&CAR_DESCRIPTION=" + car_description;
+                alert(common);
+            }
+        if (c == "property") {
+            specific = "/property";
+
+                common += "&ROOMS=" + room + "&LOCATION=" + location + "&HOUSE_DESCRIPTION=" + description1;
+            }
+        if (c == "laptop") {
+            specific = "/laptop";
+                common += "&LAPTOP_MODEL=" + l_model + "&LAPTOP_COMPANY=" + l_company + "&LAPTOP_DESCRIPTION=" + l_description;
+            }
+        if (c == "pet") {
+            specific = "/pet";
+                common += "&PET_TYPE=" + ptype + "&LEGS=" + leg + "&FOOD=" + food + "&PET_DESCRIPTION=" +description;
+            }
+        if (c == "mobile") {
+            specific = "/mobile";
+                common += "&MOBILE_MODEL=" + m_model + "&MOBILE_COMPANY=" + m_company + "&MOBILE_DESCRIPTION=" + m_description;
+            }
+        //alert(common);
+        specific += common;     // merging the type with common items
+            $.getJSON(specific, function (data) {
+                alert("hello from function");
+              
+                if (data)
+                {
+                    window.location.replace("../pet/save");
+                }
+            });
+            
+    }
+    
+</script>
+
+
+
+    <title>addpost</title>
+</head>
+<body background="../images/3.png">
+    <a href="Index"><img src="../images/prev.gif" ></a>
+    
+         
+          
+   <form action="/car/add" method="post" enctype="multipart/form-data" >
+            <table >
+                       <tr><td>Category</td> <td>
+                           <select id="category" >
+                               <option value="property">property</option>
+                               <option value="laptop">laptop</option>
+                               <option value="car">cars</option>
+                               <option value="pet">pets</option>
+                               <option value="mobile">mobile</option>
+                           </select>
+                         </td><td> <input type="button" value="Add description" onclick="check()"></td></tr>
+               
+                </table>
+
+                <div id="property">
+                    <TABLE>
+                    <tr><td> NO OF ROOMS :</TD><TD><INPUT type="text" id="room" name="ROOMS" ></td></tr>
+                    <tr><td> LOCATION :</TD><TD><INPUT type="text" id="location" name="LOCATION" ></td></tr>
+                    <tr><td> DESCRIPTION :</TD>
+                        <Td><textarea rows="4" cols="3" id="description1" name="HOUSE_DESCIPTION" ></textarea>
+
+                                               </Td></tr>
+                        </TABLE>
+                </div>
+                <div id="pets">
+                    <TABLE>
+                    <tr><td> TYPE :</TD><TD><INPUT type="text" id="pet_type" name="PET_TYPE" ></td></tr>
+                    <tr><td> LEGS :</TD><TD><INPUT type="text"id="pet_legs"  name="LEGS" ></td></tr>
+                    <tr><td> FOOD :</TD><TD><INPUT type="text" id="pet_food" name="FOOD" ></td></tr>
+                    <tr><td> DESCRIPTION :</TD>
+                        <TD><textarea id="pet_description" name="PET_DESCIPTION" ></textarea></td></tr>
+                        </TABLE>
+                </div>
+                <div id="cars">
+                    <TABLE>
+                    <tr><td> MODEL:</TD><TD><INPUT type="text" id="car_model" name="MODEL" ></td></tr>
+                    <tr><td> WHEELS :</TD><TD><INPUT type="text" id="wheel" name="WHEELS" ></td></tr>
+                    <tr><td> DOORS :</TD><TD><INPUT type="text" id="door" name="DOORS" ></td></tr>
+                    <tr><td> DESCRIPTION:</TD>
+                        <TD><textarea id="car_description" name ="CAR_DESCRIPTION" ></textarea></td></tr>
+                        </TABLE>
+                </div>
+                     <div id="laptop">
+                    <TABLE>
+                    <tr><td> MODEL:</TD><TD><INPUT type="text" id="l_model" name="LAPTOP_MODEL" ></td></tr>
+                    <tr><td> COMAPNY :</TD><TD><INPUT type="text" id="l_company" name="LAPTOP_COMPANY" ></td></tr>
+                    
+                    <tr><td> DESCRIPTION:</TD>
+                        <TD><textarea id="l_description"  name="LAPTOP_DESCRIPTION" ></textarea></td></tr>
+                        </TABLE>
+                </div>
+                <div id="mobile">
+                    <TABLE>
+                    <tr><td> MODEL :</TD><TD><INPUT type="text" id="m_model" name="MOBILE_MODEL" ></td></tr>
+                    <tr><td> COMPANY :</TD><TD><INPUT type="text"id="m_company" name="MOBILE_COMPANY" ></td></tr>
+                   <tr><td> DESCRIPTION:</TD>
+                       <TD><textarea id="m_description" name="MOBILE_DESCRIPTION" ></textarea></td></tr>
+                        </TABLE>
+                </div>
+                <P>
+                    </P>
+            <TABLE>
+                <tr><td>ITEM Name</td> <td><input id="name" name="NAME" type="text"></td></tr>
+                <tr><td>contact no</td> <td><input id="contact" name="CONTACT" type="text"></td></tr>
+
+                <tr><td>USER NAME</td> <td>
+                    <input id="type" name="TYPE" type="text">
+
+                                 @*   <select id="type">
+									<option value="guest" selected="selected">GUEST</option>
+									<option value="user" >USER </option>
+									</select>
+                                 *@
+              </td></tr>
+
+                <tr><td> PRICE :</TD><TD><INPUT id="price" type="text" name="PRICE" ></td></tr>
+             
+               <tr><td></td><td> <input type="button" value="Add" onclick="add()">
+                    <!--<input class="btn-primary" onclick="check()" type="submit" value="post">-->
+
+                   </td></tr>
+                </table>
+ 
+         
+
+                      Upload Image: <input type="file" name="images" />
+ 
+     
+ 
+                    <input type="submit" value="upload" />
+            </form>
+                
+</body>
+</html>
+
+
+

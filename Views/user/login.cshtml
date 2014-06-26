@@ -1,0 +1,79 @@
+﻿@{
+    Layout = null;
+}
+
+@model project_mango_.Models.myuser
+
+
+    
+
+
+<link href="@Url.Content("~/Content/MYCSS.css")" rel="stylesheet" type="text/css" />
+
+<body background="../images/3.png"> 
+    <script src="/Scripts/jquery-1.7.1.min.js"></script>
+        <script>
+            function show() {
+                //alert("yes");
+                $('#result').text("");            // BY DEFAULT
+                $("#result").hide();
+
+                var name = $("#name").val();
+                var pass = $("#pass").val();
+                alert(name + " and pass"+ pass);
+
+                $.getJSON("/user/check?name=" + name + "&pass=" + pass, function (data) {
+                    $('#result').show();
+                   // alert(data);
+                    if (data) {
+                        $("#result").text("logged in ");
+                    }
+                    else {
+                        $("#result").text(" you are not logged in ");
+                    }
+
+                });
+
+            }
+
+        </script>
+
+   <a href="/car"><img src="../images/prev.gif" ></a>
+        @*using ( Html.BeginForm("check","user") )*@
+    
+    <form action="/user/formcheck" method="post">
+          @Html.ValidationSummary(true)
+            <p>
+      <div id="result" style="color:red ; font:bold;"></div>
+           @Html.LabelFor(model=>model.name )   
+            </p>
+		<p>
+            <div class="editor-field">
+            @Html.EditorFor(m => m.name)
+            @Html.ValidationMessageFor(m=>m.name)
+                </div>
+		</p>
+      <p>
+          @Html.LabelFor(m=>m.pass)
+
+      </p>
+		<p>
+            <div class="editor-field">
+            @Html.PasswordFor(m=>m.pass)
+            @Html.ValidationMessageFor(m=>m.pass)
+                </div>
+		</p>
+           <p><!--  <input  id="btn" type="button" onclick="show()"   value="Submit">-->
+               <input  type="submit"  VALUE=Submit>
+        
+        <input  type="reset"  VALUE=CANCEL  ></p>
+        
+        <p>
+            @Html.ActionLink("SIGN UP","Create")
+        </p>
+    
+        </form>
+    </body>
+    
+
+    

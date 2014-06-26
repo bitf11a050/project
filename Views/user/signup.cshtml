@@ -1,0 +1,119 @@
+﻿@{
+    ViewBag.Title = "signup";
+    Layout = null;
+}
+<head>
+
+     <script src="/Scripts/jquery-1.7.1.min.js"></script>
+
+     <script>
+
+         $(document).ready(function () {
+
+             Hideit();
+         });
+
+         function Hideit() {
+             alert("hiding");
+             $('#yes').hide();
+             $('#no').hide();
+         };
+
+         function show() {
+             //alert("yes");
+             var userName = $('#username').val();
+             $.getJSON("/display/checknames?username=" + userName, function (data) {
+                 $('#yes').show();
+                 if (data) {
+                   //  $("#yes").show();
+                     $("#yes").text("not avaible  ");
+
+                 }
+                 else {
+                   //  $('#yes').show();
+                     $("#yes").text("Availed ");
+                 }
+             });
+
+         }
+        
+
+
+            
+       
+    </script>
+    </head>
+
+<link href="@Url.Content("~/Content/MYCSS.css")" rel="stylesheet" type="text/css" />
+<body background="../images/3.png">
+      <a href="Index"><img src="../images/prev.gif" ></a>
+	<form  method="post">
+		<h3>Sign-Up Page</h3>
+		<p><label>Name</label></p>
+		<p>
+			<input type="text" name="first" id="first" style="width: 140px;">
+			<input type="text" name="last" id="last" style="width: 140px;">
+		</p>
+
+		<p><label for="username">Choose your Username</label></p>
+		<p><input type="text" name="username" id="username"></p>
+       
+         <input type="button" value="check"  id="b1" onclick="show()">
+        
+        
+            <div id="yes" >  available</div>
+            <div id="no" >    not available</div>
+        
+		<p><label for="pass">Create a Password</label></p>
+		<p><input type="password" name="pass" id="pass"></p>
+
+		<p><label for="confirmpass">Confirm Your Password</label></p>
+		<p><input type="password" name="confirmpass" id="confirmpass"></p>
+
+		<p><label>Birthday</label></p>
+		<p>
+			<input type="text" name="day" id="day" style="width: 73px;">
+			<input type="text" name="month" id="month" style="width: 73px;">
+			<input type="text" name="year" id="year" style="width: 73px;">
+		</p>
+
+		<p><label>Gender</label></p>
+		<p>
+			<select>
+				<option>Male</option>
+				<option>Female</option>
+				<option>Others</option>
+			</select>
+		</p>
+
+		<p><label for="phone">Mobile Phone</label></p>
+		<p><input type="text" name="phone" id="phone"></p>
+
+		<p><label for="other-email">Other Email Address</label></p>
+		<p><input type="text" name="other-email" id="other-email"></p>
+
+		<p><label for="location">Location</label></p>
+		<p><select name="location" id="location">
+			<option selected="selected">Select Country</option>
+			<option value="Hungary">Hungary</option>	<option value="Iceland">Iceland</option>
+			<option value="India">India</option>		<option value="Japan">Japan</option>
+			<option value="Jordan">Jordan</option>		<option value="Kazakhstan">Kazakhstan</option>
+			<option value="Kenya">Kenya</option>		<option value="Kiribati">Kiribati</option>
+			<option value="Liberia">Liberia</option>	<option value="Mauritius">Mauritius</option>
+			<option value="Morocco">Morocco</option>	<option value="Mozambique">Mozambique</option>
+			<option value="Pakistan">Pakistan</option>	<option value="Panama">Panama</option>
+			<option value="Samoa">Samoa</option>		<option value="San Marino">San Marino</option>
+			<option value="Senegal">Senegal</option>	<option value="Seychelles">Seychelles</option>
+			<option value="Slovakia">Slovakia</option>	<option value="Slovenia">Slovenia</option>
+			<option value="Suriname">Suriname</option>	<option value="Swaziland">Swaziland</option>
+			<option value="Sweden">Sweden</option>		<option value="Switzerland">Switzerland</option>
+			<option value="Tunisia">Tunisia</option>	<option value="Turkey">Turkey</option>
+			<option value="Tuvalu">Tuvalu</option>		<option value="Uganda">Uganda</option>
+			<option value="Ukraine">Ukraine</option>	<option value="Uruguay">Uruguay</option>
+			<option value="Vanuatu">Vanuatu</option>	<option value="Venezuela">Venezuela</option>
+			<option value="Yemen">Yemen</option>		<option value="Zambia">Zambia</option>
+		</select></p>
+
+		<p><input type="submit" " value="Submit"></p>
+	</form>
+</body>

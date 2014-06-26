@@ -1,0 +1,38 @@
+﻿@model IEnumerable<project_mango_.Models.car>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/mylayout.cshtml";
+}
+<h2>Index</h2>
+
+    @Html.ActionLink("view all data", "viewall");
+
+
+
+<div class="tab-content" style="display:block;">
+            <div class="items">
+              <div class="cl">&nbsp;</div>
+              <ul>
+                <li>
+
+                  <div class="image"> <a href=""><img  src="../images/cars.jpg"  href="../images/cars.jpg" alt="" /></a> </div>
+                  <br><p> contact NO: <span>0333*******</span>
+                   </li>
+                <li>
+                  <div class="image"> <a name="imge" href="../images/car1.jpg"><img width="100px" height="100px"  src="../images/car1.jpg" href="../images/car1.jpg" alt="" /></a> </div>
+                  <br><p> contact NO: <span>0333*******</span>
+                      </li>
+                <li>
+                  <div class="image"> <a href="#"><img name="imge"  width="100px" height="100px"  src="../images/car2.jpg" href="../images/car2.jpg" alt="" /></a> </div>
+                 <br><p> contact NO: <span>0333*******</span>
+                     </li>
+                  <li>
+                  <div class="image"> <a href="#"><img name="imge"  width="100px" height="100px"  href="../images/car2.jpg"  src="../images/car2.jpg" alt="" /></a> </div>
+                 <br><p> contact NO: <span>0333*******</span>
+                     </li>
+
+              </ul>
+              <div class="cl">&nbsp;</div>
+            </div>
+          </div>

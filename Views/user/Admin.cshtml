@@ -1,0 +1,100 @@
+﻿@{
+    ViewBag.Title = "Admin";
+    Layout = null;
+}
+
+<h2>Admin</h2>
+<head>
+<link href="@Url.Content("~/Content/MYCSS.css")" rel="stylesheet" type="text/css" />
+   
+    <script src="/Scripts/jquery-1.7.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#after_result").hide();
+    });
+
+    function delete_user()
+    {
+        alert("acha krta hon");
+    }
+  
+    function getdata()
+    {
+
+        $.getJSON("/user/Index", function (data) {      //getting data 
+            alert("in function");
+
+            var result = "<table>";
+            $.each(data, function (i, val) {
+                result += "<tr>";
+                result += "<td>" + val.Id + "</td>";
+                result += "<td>" + val.name + "</td>";
+                result += "<td>" + val.pass + "</td>";
+                alert(val.name);
+                alert(val.pass);
+                alert(val.id);
+
+            });
+                   // making div empty
+            $("#result_div").wrapInner(result);     //loading data to page
+            $("#after_result").show();
+        });
+    }
+
+</script>
+     </head>
+
+<body background="../images/3.png" >
+
+    <a href="../car/Index"><img src="../images/prev.gif" ></a>
+
+            <form action="/user/Index">           
+                  <!--<input id="b1" onclick="getdata()" type="button" value="Search User" />-->
+               
+                 <input type="submit" value="Search user" />
+                <table>
+                    <tr><p>post data</p>
+                    <tr>    <td>
+                            <a href="../property/adminview">
+                            <input type="button" value="PROPERTY" /> 
+                            </a></td>
+                    <tr>    <td>
+                            <a href="../mobile/adminview">
+                            <input type="button" value="MOBILE" />
+
+                        </a></td>
+                    <tr>    <td>
+                            <a href="../car/adminview">
+                            <input type="button" value="CAR" />
+                         </a></td>
+                    <tr>    <td>
+                            <a href="../laptop/adminview">
+                            <input type="button" value="LAPTOP" /> 
+                         </a></td>
+                    <tr>    <td>
+                            <a href="../pet/adminview">
+                            <input type="button" value="PET" /> 
+                             </a></td>
+
+                    </tr>
+
+                </table>
+                 </form>     
+                <div id="result_div">
+                          
+                             <!-- <input type="submit" value >-->
+                            </div>
+                            <div id="after_result">
+                                <input type="text" placeholder="Enter Id to Delete" /> 
+                                <input type="button" value="Enter" onclick="delete_user()" /> 
+
+                            </div>   
+                      <p>
+                       
+                         <!-- <input onclick="show()" id="b2" type="button" value="Search product" />-->
+                      </p>
+           
+
+               
+       
+    </body>

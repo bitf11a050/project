@@ -1,0 +1,171 @@
+﻿@{
+    ViewBag.Title = "signup";
+    Layout = null;
+}
+<head>
+
+     <script src="/Scripts/jquery-1.7.1.min.js"></script>
+
+     <script>
+
+         $(document).ready(function () {
+
+             Hideit();
+         });
+
+         function Hideit() {
+             //alert("hiding");
+             $('#yes').hide();
+             $('#no').hide();
+         };
+
+         function show() {
+             //alert("yes");
+             var userName = $('#name').val();
+             $.getJSON("/user/checknames?name=" + userName, function (data) {
+                 $('#yes').show();
+                 if (data) {
+                     //  $("#yes").show();
+                     alert("mubarak ho ");
+                     $("#yes").text(" avaible  ");
+
+                 }
+                 else {
+                     //  $('#yes').show();
+                     $("#yes").text(" not Available ");
+                 }
+             });
+
+         }
+
+         function check()
+         {
+             var passowrd = $("#pass").val();
+             alert(passowrd);
+             var c_pass = $("#C_pass").val();
+             alert(c_pass);
+             if (passowrd != c_pass) {
+                 return false;
+             }
+             else {
+                 return true;
+             }
+         }
+
+
+
+
+    </script>
+    </head>
+
+<link href="@Url.Content("~/Content/MYCSS.css")" rel="stylesheet" type="text/css" />
+<body background="../images/3.png">
+
+
+
+
+<link href="@Url.Content("~/Content/MYCSS.css")" rel="stylesheet" type="text/css" />
+<body background="../images/3.png">  
+
+    @Html.ActionLink("back", "Index")
+
+@*    @using ( Html.BeginForm("Save","user" ) )
+    {
+        <fieldset>
+<legend>SIGN UP</legend>
+@Html.EditorForModel()
+
+        @Html.ValidationSummary(true);
+            <p>
+      
+           @Html.LabelFor(model=>model.name )   
+            </p>
+		<p>
+              <div class="editor-field">
+            @Html.EditorFor(m => m.name)
+            @Html.ValidationMessageFor(m=>m.name)
+                  </div>
+		</p>
+        <p>
+             <input type="button" value="check"  id="b1" onclick="show()">
+            </p>
+        <p>
+            <div id="yes" >  available</div>
+            <div id="no" >    not available</div>
+
+        </p>
+      <p>
+          @Html.LabelFor(m=>m.pass)
+
+      </p>
+		<p>
+              <div class="editor-field">
+
+            @Html.PasswordFor(m=>m.pass)
+                  @Html.ValidationMessageFor(m=>m.pass)
+                  </div>
+		</p>
+        <p>
+          @Html.Label("Confirm password")
+
+      </p>
+		<p>
+            <div class="editor-field">
+            @Html.PasswordFor(m=>m.cpass)
+            @Html.ValidationMessageFor(m=>m.cpass)
+                </div>
+		</p>
+        
+            <p>
+                <input type="submit"  value="Submit">
+        <input  type="BUTTON"  VALUE=CANCEL  />
+</fieldset>        
+       
+    }*@
+
+    @model project_mango_.Models.myuser
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm("signup","user")) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>myuser</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.name)
+            @Html.ValidationMessageFor(model => model.name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.pass)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.pass)
+            @Html.ValidationMessageFor(model => model.pass)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+    
+    
